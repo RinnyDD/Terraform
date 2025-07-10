@@ -39,6 +39,7 @@ module "iam" {
 }
 
 module "cloudwatch" {
-  source               = "./modules/cloudwatch"
-  asg_name             = module.asg.aws_autoscaling_group
+  source             = "./cloudwatch"
+  asg_name           = aws_autoscaling_group.my_asg.name
+  rds_instance_id    = aws_db_instance.mydb.id
 }
